@@ -12,6 +12,9 @@ before_action :set_post, only: [ :show, :edit, :update, :destroy]
 
   def create
     @post = Post.new(post_params) # ストロングパラメータを引数に
+    @post.attributes = {
+    user_id: current_user.id
+    }
     if @post.save
     redirect_to @post, notice: "ブログを登録しました。"
   else

@@ -1,7 +1,12 @@
 class PostsController < ApplicationController
+
   def index
+    # 記事一覧用
     @posts = Post.all
+    # 最新記事用
+    @new_posts = Post.all
   end
+
   def new
     @post = Post.new # フォーム用の空のインスタンスを生成する。
   end

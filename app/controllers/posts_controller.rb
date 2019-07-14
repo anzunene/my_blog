@@ -16,7 +16,7 @@ before_action :set_post, only: [ :show, :edit, :update, :destroy]
     user_id: current_user.id
     }
     if @post.save
-    redirect_to @post, notice: "ブログを登録しました。"
+    redirect_to user_post_path(current_user, @post), notice: "ブログを登録しました。"
   else
     render :new
   end
@@ -33,7 +33,7 @@ end
 def update
   
   if @post.update(post_params)
-    redirect_to @post, notice: "ブログを更新しました。"
+    redirect_to  user_post_path(current_user, @post), notice: "ブログを更新しました。"
   else
     render :edit
   end
